@@ -4,8 +4,10 @@ import { Container } from 'react-bootstrap'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
-function App() {
+
+const App = () => {
   return (
     <Router>
       <Header />
@@ -14,6 +16,7 @@ function App() {
           <h2>myEcommerce site</h2>
 
          <Route exact path='/' component={HomeScreen}/> 
+         <Route path='/Product/:id' component={ProductScreen}/> 
 
         </Container>
       
