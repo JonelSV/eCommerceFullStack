@@ -23,7 +23,7 @@ const tours = [
     price: 3599.99,
     countInStock: 7,
     rating: 4.7,
-    numReviews: 8,
+    numReviews: 18,
   },
   {
     _id: '3',
@@ -36,7 +36,7 @@ const tours = [
     price: 3929.99,
     countInStock: 5,
     rating: 4.3,
-    numReviews: 12,
+    numReviews: 22,
   },
   {
     _id: '4',
@@ -48,8 +48,8 @@ const tours = [
     category: 'All inclusive package',
     price: 3929.99,
     countInStock: 0,
-    rating: 4.8,
-    numReviews: 12,
+    rating: 5,
+    numReviews: 32,
   },
   {
     _id: '5',
@@ -75,7 +75,7 @@ const tours = [
     price: 2399.99,
     countInStock: 11,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 16,
   }
 ]
 
