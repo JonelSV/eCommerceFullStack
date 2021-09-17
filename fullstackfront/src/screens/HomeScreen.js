@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Loader from '../components/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import {Row, Col} from 'react-bootstrap'
 import Product from '../components/Product'
@@ -19,32 +20,32 @@ import { listProducts } from '../actions/productActions'
 // * use listProducts actions inside the useEffect to fire off and get the list of products
 // * place dispatch as a dependency, second arguement in useEffect
 // CHECK REDUX DEVTOOLS if redux is working
+// * useEffect dispatch to send request to access listProducts, then useSelector to access state
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
-   
-
+    const productList = useSelector((state) => state.productList)
+    const { loading, error, tours } = productList
         useEffect(()=> {
             dispatch(listProducts())
 
         },[dispatch])
 
-    const tours = []
+    
 
     return (
         <div>
             <h1>List of Tours</h1>
-            <Row>
-                {tours.map(tours =>(
-                    <Col key={tours._id} sm={12} md={6} lg={4} xl={3}>
-                        <Product tours ={tours} />
-                    
-                    </Col>
+            {loading ? <h2>Loading....</h2> : error ? <h3>{error}</h3> :
+             <Row>
+             {tours.map(tours =>(
+                 <Col key={tours._id} sm={12} md={6} lg={4} xl={3}>
+                     <Product tours ={tours} />
+                 </Col>
 
-                ))}
-
-
-            </Row>
+             ))}
+            </Row> }
+           
         </div>
     )
 }

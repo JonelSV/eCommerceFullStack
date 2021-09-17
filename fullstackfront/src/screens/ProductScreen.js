@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem} from 'react-bootstrap'
 import Rating from '../components/Rating'
-import axios from 'axios'
+import { listProductDetails } from '../actions/productActions'
 
 
 
@@ -17,16 +18,25 @@ import axios from 'axios'
 // useState will take in an object, and not an array like from the homescreen. 
 // use match
 const ProductScreen = ({match}) => {
-    const [tour, setTour] = useState ({})
-        
+
+    // const [tour, setTour] = useState ({})
+    const dispatch = useDispatch()
+    const productDetails = useSelector(state => state.productDetails)
+    const {loading, error, tour} = productDetails
+
+    
+
     useEffect(()=> {
-        const fetchTour = async () => {
-            // const response = await axios.get('/api/tours') - can be de-structured since output is response.data
-            const { data } = await axios.get(`/api/tours/${match.params.id}`)   
-            setTour(data)
-        }       
-        fetchTour()
-    }, [match])
+        dispatch(listProductDetails(match.params.id))
+
+
+        // const fetchTour = async () => {
+        //     // const response = await axios.get('/api/tours') - can be de-structured since output is response.data
+        //     const { data } = await axios.get(`/api/tours/${match.params.id}`)   
+        //     setTour(data)
+        // }       
+        // fetchTour()
+    }, [dispatch, match])
     
    
     
@@ -35,6 +45,7 @@ const ProductScreen = ({match}) => {
         <>
         
          <Link className='btn btn-light my-3' to='/'>Back</Link>
+         {loading ? <h2>Loading....</h2> : error ? <h3>{error}</h3> :
         <Row>
             <Col md={6}>
                 <Image src={tour.image} alt={tour.name} fluid />
@@ -87,6 +98,8 @@ const ProductScreen = ({match}) => {
                 </Card>
             </Col>
         </Row>
+
+    }
 
 
         </>
