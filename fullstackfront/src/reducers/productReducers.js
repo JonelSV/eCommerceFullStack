@@ -7,6 +7,9 @@ import {
 
 // reducer takes in two things, 1 initial state, 2 actions
 // state can be set into an empty object
+// actions has type and payload
+// SWITCH case is to evaluate the type in the action object
+// three product list types. REQUEST, SUCCESS, FAIL
 
 
 export const productListReducer = (state = { tours: []}, action) => {

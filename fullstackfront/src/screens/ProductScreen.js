@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem} from 'react-bootstrap'
 import Rating from '../components/Rating'
-import tours from '../tours'
+import axios from 'axios'
+
 
 
 // productscreen  displays the images when a specific tour is selected
@@ -13,9 +14,21 @@ import tours from '../tours'
 // 'flush' takes out borders
 // fluid makes sure that image does not spill out from the container.
 // btn-block makes it a block level element. makes the button stretch accross.
+// useState will take in an object, and not an array like from the homescreen. 
+// use match
 const ProductScreen = ({match}) => {
-
-    const tour = tours.find((t) => t._id === match.params.id)
+    const [tour, setTour] = useState ({})
+        
+    useEffect(()=> {
+        const fetchTour = async () => {
+            // const response = await axios.get('/api/tours') - can be de-structured since output is response.data
+            const { data } = await axios.get(`/api/tours/${match.params.id}`)   
+            setTour(data)
+        }       
+        fetchTour()
+    }, [match])
+    
+   
     
    
     return (
