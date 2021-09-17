@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {Row, Col} from 'react-bootstrap'
 import Product from '../components/Product'
-import axios from 'axios'
+import { listProducts } from '../actions/productActions'
+
 
 // once data is available, it can now then be passed as an array to the useState
 // do this by invoking setTours and passing on the data
@@ -9,20 +11,26 @@ import axios from 'axios'
 // useEffect takes in a second arguement, pass in array of dependencies (any variable). Anything that needs to fire off use effect when anything changes.
 // to avoid getting 404 error because of axios.get going to localhost 3000, setup a proxy on frontend JSON "proxy": "http://127.0.0.1:5000",
 // MAKE SURE TO RUN npm start on fullstackbackend directory for the server and frontend for the axiox.get request.
+// ========================================================================================
 
+// FOR REDUX  ==== take out axios, useState, but import useDispatch, and useSElector from react-redux
+// useDispatch is used to call for the Actions, then useSelector is used to access the state (product list) in the redux store
+// * define dispatch for useDispatch
+// * use listProducts actions inside the useEffect to fire off and get the list of products
+// * place dispatch as a dependency, second arguement in useEffect
+// CHECK REDUX DEVTOOLS if redux is working
 
 const HomeScreen = () => {
-
-    const [tours, setTours] = useState([])
+    const dispatch = useDispatch()
+   
 
         useEffect(()=> {
-            const fetchTours = async () => {
-                // const response = await axios.get('/api/tours') - can be de-structured since output is response.data
-                const { data } = await axios.get('/api/tours')   
-                setTours(data)
-            }       
-            fetchTours()
-        },[])
+            dispatch(listProducts())
+
+        },[dispatch])
+
+    const tours = []
+
     return (
         <div>
             <h1>List of Tours</h1>
