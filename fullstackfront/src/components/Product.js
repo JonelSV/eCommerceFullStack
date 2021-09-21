@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Rating from './Rating'
-import tours from '../tours'
+
 
 const Product = ({tours}) => {
     return (

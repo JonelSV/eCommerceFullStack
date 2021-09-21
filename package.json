@@ -1,0 +1,38 @@
+{
+  "name": "fullstackecommerce",
+  "version": "1.0.0",
+  "description": "Full Stack eCommerce Travel/Tours Shop",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node fullstackbackend/server",
+    "server": "nodemon fullstackbackend/server",
+    "client": "npm start --prefix fullstackfront",
+    "dev": "concurrently \" npm run server\" \"npm run client\"",
+    "data:import": "node fullstackbackend/seeder",
+    "data:destroy": "node fullstackbackend/seeder -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonelSV/eCommerceFullStack.git"
+  },
+  "author": "Jonel San Vicente",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JonelSV/eCommerceFullStack/issues"
+  },
+  "homepage": "https://github.com/JonelSV/eCommerceFullStack#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^6.0.6",
+    "react-spinners": "^0.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
+  }
+}

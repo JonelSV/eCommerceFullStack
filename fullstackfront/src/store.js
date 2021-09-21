@@ -5,6 +5,7 @@ import {productListReducer, productDetailsReducer} from './reducers/productReduc
 
 // import devtools
 // create MAIN reducer - combine reducer {}, initialState - object
+// productList and productListDetails are the ones you pass into the Product and Home Screens
 
 
 const reducer = combineReducers({

@@ -1,6 +1,6 @@
 const tours = [
   {
-    _id: '1',
+    
     name: 'Porto, Portugal',
     image: '/tourimages/Portugal.jpg',
     description:
@@ -13,7 +13,7 @@ const tours = [
     numReviews: 12,
   },
   {
-    _id: '2',
+    
     name: 'Athens, Greece',
     image: '/tourimages/Greece.jpg',
     description:
@@ -26,7 +26,7 @@ const tours = [
     numReviews: 18,
   },
   {
-    _id: '3',
+    
     name: 'Venice, Italy',
     image: '/tourimages/Venice.jpg',
     description:
@@ -39,7 +39,7 @@ const tours = [
     numReviews: 22,
   },
   {
-    _id: '4',
+    
     name: 'Barcelona, Spain',
     image: '/tourimages/Spain.jpg',
     description:
@@ -52,7 +52,7 @@ const tours = [
     numReviews: 32,
   },
   {
-    _id: '5',
+    
     name: 'Brussels, Belgium',
     image: '/tourimages/Belgium.jpg',
     description:
@@ -65,7 +65,7 @@ const tours = [
     numReviews: 10,
   },
   {
-    _id: '6',
+    
     name: 'Oxford, UK',
     image: '/tourimages/Ukingdom.jpg',
     description:
@@ -76,7 +76,9 @@ const tours = [
     countInStock: 11,
     rating: 4.5,
     numReviews: 16,
-  }
+  },
 ]
 
 export default tours
+
+// change export default to module.exports = tours (common JS)
