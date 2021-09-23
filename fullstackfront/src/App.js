@@ -14,10 +14,9 @@ const App = () => {
       <Header />
       <main className='py-4'>
         <Container>
-          
-         <Route exact path='/' component={HomeScreen}/> 
-         <Route path='/Product/:id' component={ProductScreen}/> 
-         <Route path='/Weather' component={Weather} />
+          <Route exact path='/' component={HomeScreen}/> 
+          <Route path='/Product/:id' component={ProductScreen}/> 
+          <Route path='/Weather' component={Weather} />
         </Container>
       
       

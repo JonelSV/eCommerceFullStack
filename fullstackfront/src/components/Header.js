@@ -2,6 +2,10 @@ import React from 'react';
 import { LinkContainer} from 'react-router-bootstrap'
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
+// in imports, specify the react - bootstrap component being used.
+// e.g. Navbar, Nav, Container... 
+// make sure to import LInkContainer from "react-router-bootstrap" and not just react router.
+
 const Header = () => {
   return (
     <header>

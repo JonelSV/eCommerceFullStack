@@ -2,6 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getWeatherData } from './ApiData';
 
+// import weatherdata from apidata folder
+
+// use parsefloat and -273.15 for conversion to celcius. toFixed to indicate
+// number of digits afeter decimal point
 
 const Weather = () => {
   const [weatherdata, setWeatherData] = useState(null);
