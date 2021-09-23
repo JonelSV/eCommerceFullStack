@@ -25,7 +25,12 @@ import { listProductDetails } from '../actions/productActions'
 // map through the array and set option to x + 1 to add one
 
 
-const ProductScreen = ({match}) => {
+// ADD TO CART 
+// will have to use props history in order to push quantity details to page
+// addtoCartHandler should push with params.id to match the url with the respective quantity
+
+
+const ProductScreen = ({history, match}) => {
     const [quantity, setQuantity] = useState (0)
     // const [tour, setTour] = useState ({})
     const dispatch = useDispatch()
@@ -46,9 +51,9 @@ const ProductScreen = ({match}) => {
         // fetchTour()
     }, [dispatch, match])
     
-   
-    
-   
+   const addtoCartHandler = () => {
+        history.push(`/cart/${match.params.id} ?quantity= ${quantity}`)
+   }
     return (
         <>
         
@@ -116,7 +121,7 @@ const ProductScreen = ({match}) => {
                             )}
 
                         <ListGroupItem>
-                            <Button className='btn-block' type='button' disabled={tour.countInStock === 0}>
+                            <Button onClick={addtoCartHandler} className='btn-block' type='button' disabled={tour.countInStock === 0}>
                                 Add to Cart
                             </Button>
                         </ListGroupItem>
