@@ -1,5 +1,6 @@
 # eCommerceFullStack (Per Scholas Mod 2 Project)
 
+# Frontend
 The focus for this Mod 2 project is the Front end aspect of my fullstack Application. This is an ecommerce application that sells travel and tour packages to various popular 
 cites around the globe. This app is intended for clients who are busy and have no time do a search for a quick vacation/holiday destiantion.
 This is a quick, click-and-go app that allows ease of booking and worry free booking process.
