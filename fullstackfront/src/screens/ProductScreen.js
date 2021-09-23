@@ -95,7 +95,9 @@ const ProductScreen = ({match}) => {
                                 <Col>Seats Available</Col>
                                 <Col>
                                     <Form.Control as='select' value={quantity} onChange={(e) => setQuantity(e.target.value)}>
-                                        [...Array(tour.countInStock).keys()].map(x =>)
+                                        [...Array(tour.countInStock).keys()].map(x => (
+                                            <option key = {x + 1}></option>
+                                        ))
                                     </Form.Control>
                                 </Col>
                             </Row>
