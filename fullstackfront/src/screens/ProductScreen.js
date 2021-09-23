@@ -17,6 +17,14 @@ import { listProductDetails } from '../actions/productActions'
 // btn-block makes it a block level element. makes the button stretch accross.
 // useState will take in an object, and not an array like from the homescreen. 
 // use match
+
+// CART functionality = Form control from bootstrap as = 'select' to select quantity available . And pass in
+// quantity prop as a value
+// onChange={(e) => setQuantity(e.target.value)} to set selected quantity of seats.
+// create an Array with that method and use spread operator to pass in available quantity of tour seats and assign keys.
+// map through the array and set option to x + 1 to add one
+
+
 const ProductScreen = ({match}) => {
     const [quantity, setQuantity] = useState (0)
     // const [tour, setTour] = useState ({})
@@ -95,9 +103,11 @@ const ProductScreen = ({match}) => {
                                 <Col>Seats Available</Col>
                                 <Col>
                                     <Form.Control as='select' value={quantity} onChange={(e) => setQuantity(e.target.value)}>
-                                        [...Array(tour.countInStock).keys()].map(x => (
-                                            <option key = {x + 1}></option>
-                                        ))
+                                        {[...Array(tour.countInStock).keys()].map(x => (
+                                            <option key = {x + 1}>
+                                                {x + 1}
+                                            </option>
+                                        ))}
                                     </Form.Control>
                                 </Col>
                             </Row>
