@@ -7,12 +7,13 @@ import { cartReducer } from './reducers/cartReducers'
 // import devtools
 // create MAIN reducer - combine reducer {}, initialState - object
 // productList and productListDetails are the ones you pass into the Product and Home Screens
+// Redux C
 
 
 const reducer = combineReducers({
         productList: productListReducer,
         productDetails: productDetailsReducer,
-        cart: cartReducer
+        cart: cartReducer,
 })
 const initialState = {}
 const middleware = [thunk]

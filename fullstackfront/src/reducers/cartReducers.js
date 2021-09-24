@@ -9,6 +9,7 @@ import { CART_ADD_ITEM } from "../constants/cartConstants";
 // if tour is available, return state as well, and map through current cartItems
 // if current iteration of map matches the exist item, then return the item, else x, so it just stays the same. - ternary operator.
 // MAKE SURE TO PASS THIS REDUCER TO STORE.JS 
+// Redux B
 
 export const cartReducer = (state = {cartItems: []}, action) => {
     switch(action.type) {
