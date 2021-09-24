@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {productListReducer, productDetailsReducer} from './reducers/productReducers'
+import { cartReducer } from './reducers/cartReducers'
 
 // import devtools
 // create MAIN reducer - combine reducer {}, initialState - object
@@ -10,7 +11,9 @@ import {productListReducer, productDetailsReducer} from './reducers/productReduc
 
 const reducer = combineReducers({
         productList: productListReducer,
-        productDetails: productDetailsReducer})
+        productDetails: productDetailsReducer,
+        cart: cartReducer
+})
 const initialState = {}
 const middleware = [thunk]
 
