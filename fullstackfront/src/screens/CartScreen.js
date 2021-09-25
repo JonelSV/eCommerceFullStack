@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import { addToCart } from '../actions/cartActions'
 
-const CartScreen = () => {
+const CartScreen = ({match, location, history}) => {
+    const productId = match.params.id 
+ 
+    const quantity = location.search
+    console.log(quantity)
     return (
         <div>
            <h3>
