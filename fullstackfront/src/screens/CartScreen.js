@@ -33,7 +33,7 @@ const CartScreen = ({match, location, history}) => {
                     {cartItems.length === 0 ? <Message> Cart is Empty <Link to='/'> Go Back </Link>
                     </Message> : (
                         <ListGroup variant='flush'>
-
+                                
                         </ListGroup>                               
                     )}
                 </Col>
