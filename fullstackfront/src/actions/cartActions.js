@@ -6,6 +6,20 @@ import { CART_ADD_ITEM } from "../constants/cartConstants";
 // do the same thing as productActions, create a function addToCart
 // takes in id and quantity, then do async dispatch
 
-export const addToCart = (id, quantity) => async(dispatch) => {
-    const { data }
+export const addToCart = (id, quantity) => async(dispatch, getState) => {
+    const { data } = await axios.get(`/api/tours/${id}`)
+
+    dispatch({
+        type: CART_ADD_ITEM,
+        payload: {
+            product: data._id,
+            name: data.name,
+            image: data.image,
+            price: data.price,
+            countInstock: data.countInstock,
+            quantity
+        }
+    })
+
+    localStorage.setItem('carItems', JSON.stringify(getState().cart.cartItems))
 }
