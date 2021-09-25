@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Row, col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import { addToCart } from '../actions/cartActions'
@@ -17,7 +17,7 @@ const CartScreen = ({match, location, history}) => {
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart 
 
-    console.log(cartItems)
+    // console.log(cartItems)
 
     useEffect(() => {
         if(productId){
@@ -26,11 +26,27 @@ const CartScreen = ({match, location, history}) => {
     }, [dispatch, productId, quantity])
     // console.log(quantity) 
     return (
-        <div>
-           <h3>
-               This is my cart
-            </h3> 
-        </div>
+      
+            <Row>
+                <Col md={8}>
+                    <h2> Shopping Cart </h2>
+                    {cartItems.length === 0 ? <Message> Cart is Empty <Link to='/'> Go Back </Link>
+                    </Message> : (
+                        <ListGroup variant='flush'>
+
+                        </ListGroup>                               
+                    )}
+                </Col>
+                <Col md={2}>
+
+                </Col>
+                <Col md={2}>
+
+                </Col>
+
+            </Row>
+
+
     )
 }
 
