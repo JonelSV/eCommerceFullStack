@@ -60,6 +60,12 @@ const CartScreen = ({match, location, history}) => {
                         ))}
                       </Form.Control>
                     </Col>
+                    <Col md={2}>
+                        <Button type='button' variant='dark' onClick={() => 
+                        removeFromCartHandler(item.tour)}>
+                            <i className='fas fa-trash'></i>
+                        </Button>
+                    </Col>
                   </Row>
                 </ListGroupItem>
               ))}
