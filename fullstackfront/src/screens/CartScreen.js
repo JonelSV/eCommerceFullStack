@@ -8,6 +8,9 @@ import { addToCart } from '../actions/cartActions'
 // ? to get quantity=1 on browser, use location .search
 // does not give number format.
 // split sets = as an array in 0 index and 1 in 1 index
+// in Form Control, allow to be able to change cart quantity in cart Screen
+// has to change Onchange => setQuantity to a dispatch (everytime change quantity, it would dispatcht to addto Cart)
+// then wrap e target.value in a Number to output a number and change the tour array to item
 
 const CartScreen = ({match, location, history}) => {
     const productId = match.params.id 
@@ -26,39 +29,47 @@ const CartScreen = ({match, location, history}) => {
     }, [dispatch, productId, quantity])
     // console.log(quantity) 
     return (
-      
-            <Row>
-                <Col md={8}>
-                    <h2> Shopping Cart </h2>
-                    {cartItems.length === 0 ? <Message> Cart is Empty <Link to='/'> Go Back </Link>
-                    </Message> : (
-                        <ListGroup variant='flush'>
-                                {cartItems.map(item => (
-                                    <ListGroupItem key={item.tour}>
-                                    <Row>
-                                        <Col md={2}>
-                                            <Image src ={item.image} alt={item.name} fluid rounded />
-                                        </Col>
-                                        <Col md={3}>
-                                            <Link to ={`/product/${item.tour}`}>{item.name}</Link>
-                                        </Col>
-                                    </Row>
-                                    </ListGroupItem>
-                                ))}
-                        </ListGroup>                               
-                    )}
-                </Col>
-                <Col md={2}>
-
-                </Col>
-                <Col md={2}>
-
-                </Col>
-
-            </Row>
-
-
-    )
+      <Row>
+        <Col md={8}>
+          <h2> Shopping Cart </h2>
+          {cartItems.length === 0 ? (
+            <Message>
+              {' '}
+              Cart is Empty <Link to='/'> Go Back </Link>
+            </Message>
+          ) : (
+            <ListGroup variant='flush'>
+              {cartItems.map((item) => (
+                <ListGroupItem key={item.tour}>
+                  <Row>
+                    <Col md={2}>
+                      <Image src={item.image} alt={item.name} fluid rounded />
+                    </Col>
+                    <Col md={3}>
+                      <Link to={`/product/${item.tour}`}>{item.name}</Link>
+                    </Col>
+                    <Col md={2}> ${item.price} </Col>
+                    <Col md={2}>
+                      <Form.Control
+                        as='select'
+                        value={quantity}
+                        onChange={(e) => dispatch(addToCart(item.tour, Number(e.target.value)))}
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1}>{x + 1}</option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                  </Row>
+                </ListGroupItem>
+              ))}
+            </ListGroup>
+          )}
+        </Col>
+        <Col md={2}></Col>
+        <Col md={2}></Col>
+      </Row>
+    );
 }
 
 export default CartScreen
