@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Form} from 'react-bootstrap'
 import Rating from '../components/Rating'
 import { listProductDetails } from '../actions/productActions'
+import { addToCart } from '../actions/cartActions'
+
 
 
 
@@ -51,9 +53,17 @@ const ProductScreen = ({history, match}) => {
         // fetchTour()
     }, [dispatch, match])
     
-   const addtoCartHandler = () => {
-        history.push(`/cart/${match.params.id} ?quantity= ${quantity}`)
-   }
+//    const addtoCartHandler = () => {
+//         history.push(`/cart/${match.params.id} ?quantity= ${quantity}`)
+//    }
+
+    const addtoCartHandler = () => {
+        dispatch(addToCart(tour._id, quantity))
+        history.push('/cart')
+    }
+
+
+
     return (
         <>
         
