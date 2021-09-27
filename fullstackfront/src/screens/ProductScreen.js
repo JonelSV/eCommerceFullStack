@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Form} from 'react-bootstrap'
 import Rating from '../components/Rating'
 import { listProductDetails } from '../actions/productActions'
-import { addToCart } from '../actions/cartActions'
+// import { addToCart } from '../actions/cartActions'
+
 
 
 
@@ -36,7 +37,7 @@ const ProductScreen = ({history, match}) => {
     const [quantity, setQuantity] = useState (1)
     // const [tour, setTour] = useState ({})
     const dispatch = useDispatch()
-    const productDetails = useSelector(state => state.productDetails)
+    const productDetails = useSelector((state) => state.productDetails)
     const {loading, error, tour} = productDetails
 
     
