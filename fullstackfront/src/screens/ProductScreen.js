@@ -53,14 +53,14 @@ const ProductScreen = ({history, match}) => {
         // fetchTour()
     }, [dispatch, match])
     
-//    const addtoCartHandler = () => {
-//         history.push(`/cart/${match.params.id} ?quantity= ${quantity}`)
-//    }
+   const addtoCartHandler = () => {
+        history.push(`/cart/${match.params.id} ?quantity= ${quantity}`)
+   }
 
-    const addtoCartHandler = () => {
-        dispatch(addToCart(tour._id, quantity))
-        history.push('/cart')
-    }
+    // const addtoCartHandler = () => {
+    //     dispatch(addToCart(tour._id, quantity))
+    //     history.push('/cart')
+    // }
 
 
 
@@ -119,7 +119,7 @@ const ProductScreen = ({history, match}) => {
                                 <Col>
                                     <Form.Control as='select' value={quantity} onChange={(e) => setQuantity(e.target.value)}>
                                         {[...Array(tour.countInStock).keys()].map(x => (
-                                            <option key = {x + 1}>
+                                            <option key = {x + 1} value= {x+1}>
                                                 {x + 1}
                                             </option>
                                         ))}

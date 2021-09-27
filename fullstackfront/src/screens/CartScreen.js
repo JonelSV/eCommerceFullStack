@@ -14,20 +14,20 @@ import { addToCart, removeFromCart } from '../actions/cartActions'
 // then wrap e target.value in a Number to output a number and change the tour array to item
 
 const CartScreen = ({match, location, history}) => {
-    // const productId = match.params.id 
+    const productId = match.params.id 
     const quantity = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch()
-    const cart = useSelector(state => state.cart)
+    const cart = useSelector((state) => state.cart)
     const { cartItems } = cart 
 
-    // console.log(cartItems)
+    console.log(cartItems)
 
-    // useEffect(() => {
-    //     if(productId){
-    //         dispatch(addToCart(productId, quantity))
-    //     }
-    // }, [dispatch, productId, quantity])
-    // console.log(quantity) 
+    useEffect(() => {
+        if(productId){
+            dispatch(addToCart(productId, quantity))
+        }
+    }, [dispatch, productId, quantity])
+    console.log(quantity) 
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
@@ -61,7 +61,7 @@ const CartScreen = ({match, location, history}) => {
                         value={item.quantity}
                         onChange={(e) => {dispatch(addToCart(item.tour, Number(e.target.value))
                           )
-                          history.push('/cart')
+                          // history.push('/cart')
                         }}
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
