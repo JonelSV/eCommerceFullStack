@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { Row, Col, ListGroup, Image, Form, Button, Card, ListGroupItem } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
+
 
 // ? to get quantity=1 on browser, use location .search
 // does not give number format.
@@ -13,8 +14,7 @@ import { addToCart } from '../actions/cartActions'
 // then wrap e target.value in a Number to output a number and change the tour array to item
 
 const CartScreen = ({match, location, history}) => {
-    const productId = match.params.id 
- 
+    // const productId = match.params.id 
     const quantity = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
@@ -22,14 +22,15 @@ const CartScreen = ({match, location, history}) => {
 
     // console.log(cartItems)
 
-    useEffect(() => {
-        if(productId){
-            dispatch(addToCart(productId, quantity))
-        }
-    }, [dispatch, productId, quantity])
+    // useEffect(() => {
+    //     if(productId){
+    //         dispatch(addToCart(productId, quantity))
+    //     }
+    // }, [dispatch, productId, quantity])
     // console.log(quantity) 
 
     const removeFromCartHandler = (id) => {
+        dispatch(removeFromCart(id))
         console.log('remove')
     }
 
@@ -58,7 +59,10 @@ const CartScreen = ({match, location, history}) => {
                       <Form.Control
                         as='select'
                         value={item.quantity}
-                        onChange={(e) => dispatch(addToCart(item.tour, Number(e.target.value)))}
+                        onChange={(e) => {dispatch(addToCart(item.tour, Number(e.target.value))
+                          )
+                          history.push('/cart')
+                        }}
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>{x + 1}</option>
