@@ -13,7 +13,7 @@ import { addToCart, removeFromCart } from '../actions/cartActions'
 // has to change Onchange => setQuantity to a dispatch (everytime change quantity, it would dispatcht to addto Cart)
 // then wrap e target.value in a Number to output a number and change the tour array to item
 
-const CartScreen = ({match, location, history}) => {
+const CartScreen = ({match, location}) => {
     const productId = match.params.id 
     const quantity = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch()
@@ -59,10 +59,10 @@ const CartScreen = ({match, location, history}) => {
                       <Form.Control
                         as='select'
                         value={item.quantity}
-                        onChange={(e) => {dispatch(addToCart(item.tour, Number(e.target.value))
+                        onChange={(e) => dispatch(addToCart(item.tour, Number(e.target.value))
                           )
                           // history.push('/cart')
-                        }}
+                        }
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>{x + 1}</option>
