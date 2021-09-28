@@ -21,6 +21,5 @@ const getTourById = asyncHandler(async (request, response) => {
    }
 })
 
-export {
-    getTours, getTourById
-}
+export {getTours, getTourById}
+    
