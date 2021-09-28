@@ -1,6 +1,6 @@
 import express from 'express' 
-import Product from '../models/productModel.js'
-import asyncHandler from 'express-async-handler'
+import {getTourById, getTours} from '..controlers/productControllers.js'
+
 const router = express.Router()
 
 // ===== FETCHING ITEMS FROM DATABASE USING EXPRESS
@@ -15,24 +15,8 @@ const router = express.Router()
 // @access   Public
 
 
-router.get('/', asyncHandler(async (request, response) => {
-    const tours = await Product.find({})    
-    response.json(tours)
-}))
+router.route('/').get(getTours)
+router.route('/:id').get(getTourById)
 
-// @route    GET/api/product/:id
-// @access   Public
-
-router.get('/:id', asyncHandler(async (request, response) => {
-   const tour = await Product.findById(request.params.id)
-
-   if(tour){
-       response.json(tour)
-   } else {
-    res.status(404)
-    throw new Error('Product not found') 
-   }
-
-}))
 
 export default router
