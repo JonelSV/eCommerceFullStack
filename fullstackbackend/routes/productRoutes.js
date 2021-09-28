@@ -1,5 +1,5 @@
 import express from 'express' 
-import {getTourById, getTours} from '..controlers/productControllers.js'
+import {getTourById, getTours} from '.controllers/productControllers.js'
 
 const router = express.Router()
 
